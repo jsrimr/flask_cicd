@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-deploy
+  name: gke-test
   namespace: example
   labels:
-    app: example-app
+    app: helloflask-app
   annotations:
 spec:
   selector:
     matchLabels:
-      app: example-app
+      app: helloflask-app
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -19,10 +19,10 @@ spec:
   template:
     metadata:
       labels:
-        app: example-app
+        app: helloflask-app
     spec:
       containers:
-      - name: example-app
+      - name: helloflask-app
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         imagePullPolicy: Always
         ports:
